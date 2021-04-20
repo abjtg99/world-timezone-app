@@ -5,11 +5,12 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="6768c8a3-c382-41d0-9c2a-ec979bcf5f74" basePath="/timezone" >
-		<http:listener-connection host="0.0.0.0" port="8093" />
+		<http:listener-connection host="0.0.0.0" port="${http.port}" />
 	</http:listener-config>
 	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="e6f5db0d-8681-4492-aca3-a80789c43021" basePath="/api/timezone/">
 		<http:request-connection host="worldtimeapi.org" />
 	</http:request-config>
+	<configuration-properties doc:name="Configuration properties" doc:id="e139b19c-a2f0-4962-b4af-5dd600a726ae" file="mule-app.properties" />
 	<flow name="worldtime-demoFlow" doc:id="4265bf92-c8b7-4c0f-ac2e-7068751c13a9" >
 		<http:listener doc:name="Listener" doc:id="b5abec1c-9060-4136-99a6-9847eca93cd8" config-ref="HTTP_Listener_config" path="/{region}/{city}" allowedMethods="GET"/>
 		<http:request method="GET" doc:name="Request" doc:id="387eef3e-0019-4360-a18b-70af8befff54" config-ref="HTTP_Request_configuration" path="{region}/{city}">
