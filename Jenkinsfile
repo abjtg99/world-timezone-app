@@ -11,7 +11,7 @@ sh mvn clean install
 stage {"Deploy Application to Cloudhub"}{
 steps{
 sh mvn package deploy -DmuleDeploy 
-}
-}
+	}
+	}
 }
 }
