@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="worldtime-demo-test-suite.xml" />
+	<munit:test name="worldtime-demo-test-suite-worldtime-demoFlowTest" doc:id="707fc543-dc9e-449d-a3fa-6e94b3d54dba" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow Reference" doc:id="c89927f5-22da-4875-bcce-d11a4dc21877" name="worldtime-demo-test-suiteFlow"/>
+			<flow-ref doc:name="Flow-ref to worldtime-demoFlow" doc:id="cda5832a-de2f-4946-b5c6-f541ea22ae88" name="worldtime-demoFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="15524a51-f13e-4fca-92b6-ca1dead1962a" message="Passed payload is null" expression="#[payload]" is="#[MunitTools::anyOf([MunitTools::notNullValue(),MunitTools::withMediaType('application/json')])]"/>
+		</munit:validation>
+	</munit:test>
+	<flow name="worldtime-demo-test-suiteFlow" doc:id="c1177aba-90f1-4eb0-bc83-b41559379264" >
+		<munit:set-event doc:name="Set Event" doc:id="61b049c4-3251-4399-8b63-76c42999c4af">
+				<munit:attributes value="#[{uriParams:{'region':'Asia','city':'Kolkata'}}]" />
+			</munit:set-event>
+	</flow>
+	<munit:test name="worldtime-demo-test-suite-worldtime-DST" doc:id="81fd696f-1908-485f-b6d9-47079e22a2fa" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow Reference" doc:id="c1eba18d-a09e-405b-9f57-673edea6fd4b" name="worldtime-demo-test-suiteFlow"/>
+			<flow-ref doc:name="Flow-ref to worldtime-demoFlow" doc:id="504ff274-e2e5-4f1b-92d6-12c6dddbaf96" name="worldtime-demoFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="08da7536-481a-4607-af72-7df664884f3a" message="DST value is not correct" expression="#[payload.dst]" is="#[MunitTools::equalTo(false)]"/>
+		</munit:validation>
+	</munit:test>
+
+</mule>
