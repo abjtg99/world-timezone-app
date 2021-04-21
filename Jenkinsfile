@@ -10,7 +10,7 @@ pipeline {
             }
         }
 		
-		stage('Build Application') {
+		stage('Test Application') {
             steps {
                 sh '''export M2_HOME=/Users/abhijeetghatol/Downloads/apache-maven-3.8.1
 					  export PATH=$PATH:$M2_HOME/bin
