@@ -8,7 +8,7 @@
 		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
 		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
 	<munit:config name="worldtime-demo-test-suite.xml" />
-	<munit:test name="worldtime-demo-test-suite-worldtime-demoFlowTest" doc:id="707fc543-dc9e-449d-a3fa-6e94b3d54dba" description="Test">
+	<munit:test name="worldtime-demo-test-suite-worldtime-demoFlowTest" doc:id="707fc543-dc9e-449d-a3fa-6e94b3d54dba" description="Test" ignore="true">
 		<munit:execution >
 			<flow-ref doc:name="Flow Reference" doc:id="c89927f5-22da-4875-bcce-d11a4dc21877" name="worldtime-demo-test-suiteFlow"/>
 			<flow-ref doc:name="Flow-ref to worldtime-demoFlow" doc:id="cda5832a-de2f-4946-b5c6-f541ea22ae88" name="worldtime-demoFlow"/>
