@@ -22,7 +22,7 @@
 				<munit:attributes value="#[{uriParams:{'region':'Asia','city':'Kolkata'}}]" />
 			</munit:set-event>
 	</flow>
-	<munit:test name="worldtime-demo-test-suite-worldtime-DST" doc:id="81fd696f-1908-485f-b6d9-47079e22a2fa" description="Test">
+	<munit:test name="worldtime-demo-test-suite-worldtime-DST" doc:id="81fd696f-1908-485f-b6d9-47079e22a2fa" description="Test" ignore="true">
 		<munit:execution >
 			<flow-ref doc:name="Flow Reference" doc:id="c1eba18d-a09e-405b-9f57-673edea6fd4b" name="worldtime-demo-test-suiteFlow"/>
 			<flow-ref doc:name="Flow-ref to worldtime-demoFlow" doc:id="504ff274-e2e5-4f1b-92d6-12c6dddbaf96" name="worldtime-demoFlow"/>
